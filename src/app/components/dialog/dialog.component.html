@@ -1,0 +1,10 @@
+<h2>Create new code</h2>
+<form mat-dialog-content class="create-new-code-dialog">
+  <mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="data.title" name="title">
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>OK</button>
+</div>

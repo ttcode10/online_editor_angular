@@ -1,0 +1,16 @@
+<div class="editor-container">
+  <form #editorForm="ngForm" (ngSubmit)="onSubmit()">
+    <nav>
+      <button mat-button routerLink="/"><mat-icon>arrow_back_ios</mat-icon>Back</button>
+      <button mat-button (click)="onDelete(code)"><mat-icon>delete</mat-icon> Delete</button>
+      <button mat-button type="submit"><mat-icon>save</mat-icon> Save</button>
+    </nav>
+    <ngx-monaco-editor
+      class="monaco-editor"
+      [options]="editorOptions"
+      [(ngModel)]="code.code"
+      name="code"
+    >
+    </ngx-monaco-editor>
+  </form>
+</div>

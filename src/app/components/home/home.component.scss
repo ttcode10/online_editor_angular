@@ -1,0 +1,18 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px 10px;
+  padding: 32px;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-card-header {
+  .mat-card-header-text {
+    margin-left: 0;
+  }
+}
