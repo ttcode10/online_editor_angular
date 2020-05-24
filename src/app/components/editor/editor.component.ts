@@ -39,12 +39,10 @@ export class EditorComponent implements OnInit {
       ...this.code,
       lastChangedAt: new Date()
     };
-    console.log('onSubmit', updatedCode);
     this.editorService.updateCode(updatedCode);
   }
 
   onDelete(code: Code) {
-    console.log('deleted', code);
     this.editorService.deleteCode(code.id);
     this.router.navigate(['/']);
   }

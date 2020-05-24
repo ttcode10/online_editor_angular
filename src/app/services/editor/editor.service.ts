@@ -87,7 +87,6 @@ export class EditorService {
 
   addCode(codeToAdd: Code) {
     const existingCode = this.codes.find(code => codeToAdd.id === code.id);
-    console.log('service-addCode', existingCode);
     if(!existingCode) {
       this.codes.unshift(codeToAdd);
     }
