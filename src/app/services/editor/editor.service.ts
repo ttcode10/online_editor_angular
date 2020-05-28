@@ -33,18 +33,6 @@ export class EditorService {
     localStorage.setItem('codes', JSON.stringify(this.codes));
   }
 
-  // getFromLocalStorage(): Observable<Code[]> {
-  //   return of(JSON.parse(localStorage.getItem('codes')));
-  // }
-
-  // getCodes(): Observable<Code[]> {
-  //   this.getFromLocalStorage().subscribe(storageCodes => {
-  //     if(!storageCodes) {
-  //       return of(this.codes);
-  //     } return of(storageCodes);
-  //   });
-  // }
-
   getFromLocalStorage() {
     return JSON.parse(localStorage.getItem('codes'));
   }
