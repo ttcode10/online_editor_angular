@@ -11,78 +11,7 @@ export class EditorService {
   id: string;
 
   constructor() {
-    this.codes = [
-      {
-        id: 'code1',
-        title: 'Title-1',
-        code: 'sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code2',
-        title: 'Title-2',
-        code: '234sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code3',
-        title: 'Title-3',
-        code: 'sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code4',
-        title: 'Title-4',
-        code: '234sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code5',
-        title: 'Title-5',
-        code: 'sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code6',
-        title: 'Title-6',
-        code: '234sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code7',
-        title: 'Title-7',
-        code: 'sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code8',
-        title: 'Title-8',
-        code: '234sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code9',
-        title: 'Title-9',
-        code: 'sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      },
-      {
-        id: 'code10',
-        title: 'Title-10',
-        code: '234sdfdsfgw',
-        createdAt: new Date('2019-04-25, 09:34:32'),
-        lastChangedAt: new Date('2019-04-25, 09:34:32')
-      }
-    ]
+    this.codes = []
   }
 
   addCode(codeToAdd: Code) {
@@ -104,6 +33,18 @@ export class EditorService {
     localStorage.setItem('codes', JSON.stringify(this.codes));
   }
 
+  // getFromLocalStorage(): Observable<Code[]> {
+  //   return of(JSON.parse(localStorage.getItem('codes')));
+  // }
+
+  // getCodes(): Observable<Code[]> {
+  //   this.getFromLocalStorage().subscribe(storageCodes => {
+  //     if(!storageCodes) {
+  //       return of(this.codes);
+  //     } return of(storageCodes);
+  //   });
+  // }
+
   getFromLocalStorage() {
     return JSON.parse(localStorage.getItem('codes'));
   }
@@ -114,6 +55,7 @@ export class EditorService {
       return of(this.codes);
     } return of(localCode);
   }
+
 
   generateId() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -141,7 +83,9 @@ export class EditorService {
   }
 
   deleteCode(id: string) {
-    return this.codes.filter(code => code.id !== id );
+    const codeToDeleteIndex = this.codes.findIndex(code => code.id === id);
+    this.codes.splice(codeToDeleteIndex, 1);
+    this.saveToLocalStorage();
   }
 
 }

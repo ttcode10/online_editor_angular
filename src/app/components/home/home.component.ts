@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.editorService.getCodes().subscribe(codes => {
-      if(codes.length !== 0) {
+      if(!!codes) {
         this.codes = codes;
       }
     });
@@ -37,9 +37,11 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.editorService.createNewCode(result).subscribe(id => {
-        this.router.navigate(['/editor', id])
-      });
+      if(!!result) {
+        this.editorService.createNewCode(result).subscribe(id => {
+          this.router.navigate(['/editor', id])
+        });
+      }
     });
   }
 
@@ -49,6 +51,11 @@ export class HomeComponent implements OnInit {
 
   deleteCode(code: Code) {
     this.editorService.deleteCode(code.id);
+    this.editorService.getCodes().subscribe(codes => {
+      if(!!codes) {
+        this.codes = codes;
+      }
+    });
   }
 
 }
