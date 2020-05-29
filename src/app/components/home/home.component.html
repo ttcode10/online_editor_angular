@@ -3,8 +3,8 @@
     <mat-icon>add</mat-icon>
     <h3>NEW CODE</h3>
   </mat-card>
-  <div *ngIf="codes.length > 0">
-    <mat-card *ngFor="let code of codes">
+  <div *ngFor="let code of codes">
+    <mat-card *ngIf="codes.length > 0">
       <div (click)="redirectToDetail(code)">
         <mat-card-header>
           <mat-card-title>{{code.title}}</mat-card-title>
